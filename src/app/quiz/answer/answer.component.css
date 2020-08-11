@@ -1,0 +1,9 @@
+#answerBox {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid black;
+  border-color: #654321;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
