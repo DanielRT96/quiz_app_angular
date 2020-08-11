@@ -7,6 +7,16 @@
     [ngClass]="{'answerBox': this.status === 'neutral', 'correctAnswer': this.status === 'correct', 'incorrectAnswer': this.status === 'incorrect'}">
 
   <hr style="margin-top: 90px">
-  <button type="button" class="button pull-left" (click)="generateQuestion()">Next Question</button>
-  <button type="button" class="button pull-right">Set Time</button>
+  <button type="button" class="button" (click)="generateQuestion()">Next Question</button>
+  <div class="dropdown">
+    <button class="dropdown__hover">Set Time</button>
+    <div class="dropdown__menu" (click)="setTimer($event)">
+      <li value="1">1 sec</li>
+      <li value="2">2 sec</li>
+      <li value="3">3 sec</li>
+      <li value="4">4 sec</li>
+      <li value="5">5 sec</li>
+    </div>
+  </div>
+
 </div>

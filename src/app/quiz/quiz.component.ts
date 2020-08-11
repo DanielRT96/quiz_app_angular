@@ -10,7 +10,8 @@ export class QuizComponent implements OnInit {
   currentQuestion: string;
   currentAnswer: string;
   inputValue: string;
-  status: string = 'neutral';
+  status = 'neutral';
+  timer: number;
 
   @ViewChild('answerBox') el: ElementRef;
 
@@ -29,19 +30,24 @@ export class QuizComponent implements OnInit {
   }
   onKeyUp(value) {
     this.inputValue = value;
-    console.log(this.inputValue);
-    if (this.inputValue === this.currentAnswer) {
-      this.status = 'correct';
-      setTimeout(() => {
-        this.generateQuestion();
-        this.resetQuestion();
-      }, 2000);
-    } else {
-      this.status = 'incorrect';
-      setTimeout(() => {
-        this.resetQuestion();
-      }, 2000);
-    }
+    setTimeout(() => {
+      if (this.inputValue === this.currentAnswer) {
+        this.status = 'correct';
+        setTimeout(() => {
+          this.generateQuestion();
+          this.resetQuestion();
+        }, 2000);
+      } else {
+        this.status = 'incorrect';
+        setTimeout(() => {
+          this.resetQuestion();
+        }, 2000);
+      }
+    }, this.timer);
+  }
+
+  setTimer($event) {
+    this.timer = $event.target.value * 1000;
   }
 
   resetQuestion() {
