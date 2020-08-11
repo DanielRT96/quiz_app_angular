@@ -32,10 +32,20 @@ export class QuizComponent implements OnInit {
     console.log(this.inputValue);
     if (this.inputValue === this.currentAnswer) {
       this.status = 'correct';
-      this.generateQuestion();
+      setTimeout(() => {
+        this.generateQuestion();
+        this.resetQuestion();
+      }, 2000);
     } else {
       this.status = 'incorrect';
-      console.log('better luck next time');
+      setTimeout(() => {
+        this.resetQuestion();
+      }, 2000);
     }
+  }
+
+  resetQuestion() {
+    this.status = 'neutral';
+    this.el.nativeElement.value = '';
   }
 }
