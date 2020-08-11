@@ -1,18 +1,12 @@
 <div class="row">
   <h1>CoffeeQuiz</h1>
-
   <hr style="margin-bottom: 20px">
-
   <p id="question">{{ currentQuestion }}</p>
-
-  <app-answer [currentAnswer]="currentAnswer"></app-answer>
+  <input class="answerBox" [class.answerBox] #answerBox type="text" placeholder="Please write your answer here!"
+    (keyup.enter)="onKeyUp(answerBox.value)"
+    [ngClass]="{'answerBox': this.status === 'neutral', 'correctAnswer': this.status === 'correct', 'incorrectAnswer': this.status === 'incorrect'}">
 
   <hr style="margin-top: 90px">
-
   <button type="button" class="button pull-left" (click)="generateQuestion()">Next Question</button>
   <button type="button" class="button pull-right">Set Time</button>
-
-
-
-
 </div>

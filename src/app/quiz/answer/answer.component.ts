@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-answer',
@@ -6,19 +6,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./answer.component.css']
 })
 export class AnswerComponent implements OnInit {
-  @Input() currentAnswer: string;
   inputValue: string;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onKeyUp($event) {
-    this.inputValue = $event.target.value;
-    console.log(this.inputValue);
-
-    if (this.inputValue === this.currentAnswer) {
-      console.log('good');
-    }
-  }
+  // onKeyUp($event) {
+  //   this.inputValue = $event.target.value;
+  //   if (this.inputValue === this.currentAnswer) {
+  //     this.generateQuestion();
+  //     this.el.nativeElement.value = '';
+  //   } else {
+  //     console.log('better luck next time');
+  //   }
+  // }
 }

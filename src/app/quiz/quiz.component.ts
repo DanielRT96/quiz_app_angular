@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -9,6 +9,10 @@ import { HttpService } from '../http.service';
 export class QuizComponent implements OnInit {
   currentQuestion: string;
   currentAnswer: string;
+  inputValue: string;
+  status: string = 'neutral';
+
+  @ViewChild('answerBox') el: ElementRef;
 
   constructor(private httpService: HttpService) {}
 
@@ -22,5 +26,16 @@ export class QuizComponent implements OnInit {
       this.currentAnswer = data[0].answer;
       console.log(this.currentAnswer);
     });
+  }
+  onKeyUp(value) {
+    this.inputValue = value;
+    console.log(this.inputValue);
+    if (this.inputValue === this.currentAnswer) {
+      this.status = 'correct';
+      this.generateQuestion();
+    } else {
+      this.status = 'incorrect';
+      console.log('better luck next time');
+    }
   }
 }
