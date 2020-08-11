@@ -1,1 +1,17 @@
-<p>quiz works!</p>
+<div class="row">
+  <h1>CoffeeQuiz</h1>
+
+  <hr style="margin-bottom: 20px">
+
+  <app-question></app-question>
+
+  <input class="form-control" id="answerBox" type="text" placeholder="Please write your answer here!"
+    aria-label="Please write your asnwer here!" aria-describedby="basic-addon1">
+
+  <hr style="margin-top: 90px">
+
+  <button type="button" class="button pull-left" (click)="nextQuestion()">Next Question</button>
+  <button type="button" class="button pull-right">Set Time</button>
+
+
+</div>
