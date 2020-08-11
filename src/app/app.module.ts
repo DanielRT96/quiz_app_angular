@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { QuestionComponent } from './quiz/question/question.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryItemComponent } from './categories/category-item/category-item.component';
 
@@ -12,7 +11,6 @@ import { CategoryItemComponent } from './categories/category-item/category-item.
   declarations: [
     AppComponent,
     QuizComponent,
-    QuestionComponent,
     CategoriesComponent,
     CategoryItemComponent
   ],

@@ -7,6 +7,13 @@ h1 {
   padding: 2px 0px;
 }
 
+#question {
+  font-family: "monospace";
+  font-size: 30px;
+  color: #654321;
+
+}
+
 #answerBox {
   width: 100%;
   background-color: #fff;

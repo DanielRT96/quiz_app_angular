@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Category } from './category.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-categories',
@@ -10,19 +10,11 @@ import { HttpClient } from '@angular/common/http';
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
 
-  constructor(private http: HttpClient) {
-    this.fetchData();
-  }
+  constructor(private httpService: HttpService) {}
 
-  ngOnInit(): void {}
-
-  private fetchData() {
-    this.http
-      .get('http://jservice.io/api/categories?count=10')
-      .subscribe((response: any) => {
-        const data = response.map(el => new Category(el.title, el.clues_count));
-        this.categories.push(...data);
-        console.log(data);
-      });
+  ngOnInit(): void {
+    this.httpService.getCategories().subscribe(data => {
+      this.categories = data;
+    });
   }
 }
