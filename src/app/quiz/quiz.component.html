@@ -2,9 +2,8 @@
   <h1>CoffeeQuiz</h1>
   <hr style="margin-bottom: 20px">
   <p id="question">{{ currentQuestion }}</p>
-  <input class="answerBox" [class.answerBox] #answerBox type="text" placeholder="Please write your answer here!"
-    (keyup.enter)="onKeyUp(answerBox.value)"
-    [ngClass]="{'answerBox': this.status === 'neutral', 'correctAnswer': this.status === 'correct', 'incorrectAnswer': this.status === 'incorrect'}">
+
+  <app-answer (generateQuestion)="generateQuestion()" [currentAnswer]="currentAnswer" [timer]="timer"></app-answer>
 
   <hr style="margin-top: 90px">
   <button type="button" class="button" (click)="generateQuestion()">Next Question</button>

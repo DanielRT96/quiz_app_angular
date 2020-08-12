@@ -9,11 +9,7 @@ import { HttpService } from '../http.service';
 export class QuizComponent implements OnInit {
   currentQuestion: string;
   currentAnswer: string;
-  inputValue: string;
-  status = 'neutral';
   timer: number;
-
-  @ViewChild('answerBox') el: ElementRef;
 
   constructor(private httpService: HttpService) {}
 
@@ -28,30 +24,8 @@ export class QuizComponent implements OnInit {
       console.log(this.currentAnswer);
     });
   }
-  onKeyUp(value) {
-    this.inputValue = value;
-    setTimeout(() => {
-      if (this.inputValue === this.currentAnswer) {
-        this.status = 'correct';
-        setTimeout(() => {
-          this.generateQuestion();
-          this.resetQuestion();
-        }, 2000);
-      } else {
-        this.status = 'incorrect';
-        setTimeout(() => {
-          this.resetQuestion();
-        }, 2000);
-      }
-    }, this.timer);
-  }
 
   setTimer($event) {
     this.timer = $event.target.value * 1000;
-  }
-
-  resetQuestion() {
-    this.status = 'neutral';
-    this.el.nativeElement.value = '';
   }
 }
