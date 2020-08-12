@@ -12,7 +12,7 @@ export class HttpService {
   public getCategories() {
     return this.http.get(`http://jservice.io/api/categories?count=10`).pipe(
       map((result: any[]) => {
-        return result.map(r => new Category(r.title, r.clues_count));
+        return result.map(r => new Category(r.id, r.title, r.clues_count));
       })
     );
   }

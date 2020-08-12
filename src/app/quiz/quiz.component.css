@@ -19,7 +19,7 @@ button {
   font-size: 20px;
   color: #fff;
   border: 1px solid #2b1d0e;
-  margin: 30px 0px 0px 140px;
+  margin: 20px 0px 0px 130px;
   padding: 10px 10px;
 }
 
@@ -63,13 +63,12 @@ button:focus {
   background: white;
   color: #654321;
   box-shadow: 0 3px 2px rgba(0, 0, 0.3);
-  margin-left: 140px;
+  margin-left: 130px;
   margin-top: 0px;
 }
 
 .dropdown:hover .dropdown__menu {
   display: block;
-
 }
 
 .dropdown__menu li {
@@ -79,13 +78,16 @@ button:focus {
   text-decoration: none;
   text-align: center;
   font-size: 20px;
-
 }
 
 .dropdown__menu li:hover {
   background: #654321;
   color: white;
   cursor: pointer;
+}
+
+.dropdown__menu.closed li {
+  display: none;
 }
 
 /* .category-label {

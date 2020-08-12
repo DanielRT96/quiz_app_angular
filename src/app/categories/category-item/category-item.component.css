@@ -1,0 +1,15 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+
+.list-group-item.clearfix:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+.list-group-item.clearfix.active {
+  background-color: grey;
+}

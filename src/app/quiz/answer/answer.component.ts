@@ -47,10 +47,6 @@ export class AnswerComponent implements OnInit {
     }, this.timer);
   }
 
-  setTimer($event) {
-    this.timer = $event.target.value * 1000;
-  }
-
   resetQuestion() {
     this.status = 'neutral';
     this.el.nativeElement.value = '';

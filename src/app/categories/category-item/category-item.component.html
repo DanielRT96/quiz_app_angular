@@ -1,8 +1,9 @@
-<a href="#" class="list-group-item clearfix">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">Category name: {{ category.name }}</h4>
-    <p class="list-group-item-text">Number of clues: {{ category.clueNumber }}</p>
+<ul id="{{ category.id }}" class="list-group-item clearfix" (click)="onClick($event)"
+  [ngClass]="selected ? 'active' : ''">
+  <div id="{{ category.id }}" class=" box pull-left">
+    <h4 id="{{ category.id }}" class="list-group-item-heading">Category name: {{ category.name }}</h4>
+    <p id="{{ category.id }}" class="list-group-item-text">Number of clues: {{ category.clueNumber }}</p>
   </div>
   <span class="pull-right">
   </span>
-</a>
+</ul>
