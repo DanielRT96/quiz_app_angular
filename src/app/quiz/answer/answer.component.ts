@@ -17,7 +17,7 @@ export class AnswerComponent implements OnInit {
   @Input() currentAnswer: string;
   @Input() timer: number;
   inputValue: string;
-  status = 'neutral';
+  status = 'empty';
 
   @ViewChild('answerBox') el: ElementRef;
 
@@ -31,6 +31,7 @@ export class AnswerComponent implements OnInit {
 
   enterAnswer(value) {
     this.inputValue = value;
+    this.status = 'neutral';
     setTimeout(() => {
       if (this.inputValue === this.currentAnswer) {
         this.status = 'correct';
@@ -48,7 +49,7 @@ export class AnswerComponent implements OnInit {
   }
 
   resetQuestion() {
-    this.status = 'neutral';
+    this.status = 'empty';
     this.el.nativeElement.value = '';
   }
 }

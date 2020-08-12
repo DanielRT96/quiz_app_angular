@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Category } from '../category.model';
+import { HttpService } from '../../http.service';
 
 @Component({
   selector: 'app-category-item',
@@ -10,6 +11,8 @@ import { Category } from '../category.model';
 export class CategoryItemComponent implements OnInit {
   selected: boolean = false;
   currentID: number;
+  correctAnswer: string;
+  currentQuestion: string;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -17,7 +20,7 @@ export class CategoryItemComponent implements OnInit {
 
   @Input() category: Category;
 
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {}
 
@@ -26,9 +29,24 @@ export class CategoryItemComponent implements OnInit {
     if (this.selected === true) {
       this.currentID = $event.target.id;
       console.log($event.target.id);
+      this.filterCategory(this.currentID);
     } else {
-      console.log('test');
       this.generateQuestion.emit();
     }
+  }
+
+  public filterCategory(id) {
+    this.httpService.filterCategory(id).subscribe(data => {
+      console.log(data);
+      const dataLength = Object.keys(data).length;
+      const random = Math.floor(Math.random() * dataLength);
+      // console.log(random);
+      // categoryID = x.id;
+      // categoryName = x.title;
+      this.correctAnswer = data[random].answer;
+      this.currentQuestion = data[random].question;
+      console.log(this.currentQuestion);
+      console.log(this.correctAnswer); // use two-way binding ngModel
+    });
   }
 }

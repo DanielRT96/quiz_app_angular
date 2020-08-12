@@ -80,6 +80,10 @@ button:focus {
   font-size: 20px;
 }
 
+.dropdown__menu li:after {
+  display: none;
+}
+
 .dropdown__menu li:hover {
   background: #654321;
   color: white;

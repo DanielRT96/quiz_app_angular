@@ -1,3 +1,3 @@
 <input class="answerBox" [class.answerBox] #answerBox type="text" placeholder="Please write your answer here!"
   (keyup.enter)="enterAnswer(answerBox.value)"
-  [ngClass]="{'answerBox': this.status === 'neutral', 'correctAnswer': this.status === 'correct', 'incorrectAnswer': this.status === 'incorrect'}">
+  [ngClass]="{'answerBox': this.status === 'empty', 'correctAnswer': this.status === 'correct', 'incorrectAnswer': this.status === 'incorrect', 'pendingAnswer': this.status === 'neutral'}">

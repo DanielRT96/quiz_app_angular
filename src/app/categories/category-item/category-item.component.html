@@ -1,5 +1,5 @@
-<ul id="{{ category.id }}" class="list-group-item clearfix" (click)="onClick($event)"
-  [ngClass]="selected ? 'active' : ''">
+<ul id="{{ category.id }}" class="list-group-item clearfix" (click)="onClick($event) "
+  [ngClass]="selected ? 'active' : 'inactive'">
   <div id="{{ category.id }}" class=" box pull-left">
     <h4 id="{{ category.id }}" class="list-group-item-heading">Category name: {{ category.name }}</h4>
     <p id="{{ category.id }}" class="list-group-item-text">Number of clues: {{ category.clueNumber }}</p>

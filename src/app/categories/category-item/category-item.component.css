@@ -13,3 +13,8 @@
 .list-group-item.clearfix.active {
   background-color: grey;
 }
+
+.list-group-item.clearfix.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

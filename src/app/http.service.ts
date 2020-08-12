@@ -20,4 +20,8 @@ export class HttpService {
   public getRandom() {
     return this.http.get('http://jservice.io/api/random');
   }
+
+  public filterCategory(id) {
+    return this.http.get(`http://jservice.io/api/clues?category=${id}`);
+  }
 }
