@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Category } from './categories/category.model';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,9 @@ export class HttpService {
     return this.http.get('http://jservice.io/api/random').subscribe(data => {
       this.currentQuestion = data[0].question;
       this.currentAnswer = data[0].answer;
-      console.log(this.currentAnswer);
       console.log(this.currentQuestion);
+      console.log(this.currentAnswer);
+      console.log(data[0].category_id);
     });
   }
 
@@ -40,6 +40,7 @@ export class HttpService {
         this.currentQuestion = data[random].question;
         console.log(this.currentQuestion);
         console.log(this.currentAnswer);
+        console.log(data[random].category_id);
       });
   }
 }

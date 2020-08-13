@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-quiz',
@@ -7,23 +8,26 @@ import { HttpService } from '../http.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  // currentQuestion: string;
-  // currentAnswer: string;
   timer: number;
+  selected: boolean;
+  currentID: number;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private data: DataService) {}
 
   ngOnInit(): void {
     this.generateQuestion();
+    this.data.currentSelection.subscribe(
+      selected => (this.selected = selected)
+    );
+    this.data.currentID.subscribe(currentID => (this.currentID = currentID));
   }
 
   generateQuestion() {
-    this.httpService.getRandom();
-    // .subscribe(data => {
-    //   this.currentQuestion = data[0].question;
-    //   this.currentAnswer = data[0].answer;
-    // });
-    // this.httpService.changeQuestion(this.currentQuestion);
+    if (this.selected === true) {
+      this.httpService.filterCategory(this.currentID);
+    } else {
+      this.httpService.getRandom();
+    }
   }
 
   public get questionText(): string {
