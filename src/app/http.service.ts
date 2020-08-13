@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Category } from './categories/category.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  currentAnswer: string;
+  currentQuestion: string;
+
   constructor(private http: HttpClient) {}
 
   public getCategories() {
@@ -18,10 +22,24 @@ export class HttpService {
   }
 
   public getRandom() {
-    return this.http.get('http://jservice.io/api/random');
+    return this.http.get('http://jservice.io/api/random').subscribe(data => {
+      this.currentQuestion = data[0].question;
+      this.currentAnswer = data[0].answer;
+      console.log(this.currentAnswer);
+      console.log(this.currentQuestion);
+    });
   }
 
   public filterCategory(id) {
-    return this.http.get(`http://jservice.io/api/clues?category=${id}`);
+    return this.http
+      .get(`http://jservice.io/api/clues?category=${id}`)
+      .subscribe(data => {
+        const dataLength = Object.keys(data).length;
+        const random = Math.floor(Math.random() * dataLength);
+        this.currentAnswer = data[random].answer;
+        this.currentQuestion = data[random].question;
+        console.log(this.currentQuestion);
+        console.log(this.currentAnswer);
+      });
   }
 }

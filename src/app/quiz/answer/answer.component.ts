@@ -8,13 +8,15 @@ import {
   Input
 } from '@angular/core';
 
+import { HttpService } from '../../http.service';
+
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
   styleUrls: ['./answer.component.css']
 })
 export class AnswerComponent implements OnInit {
-  @Input() currentAnswer: string;
+  // @Input() currentAnswer: string;
   @Input() timer: number;
   inputValue: string;
   status = 'empty';
@@ -25,7 +27,7 @@ export class AnswerComponent implements OnInit {
     any
   > = new EventEmitter();
 
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {}
 
@@ -51,5 +53,9 @@ export class AnswerComponent implements OnInit {
   resetQuestion() {
     this.status = 'empty';
     this.el.nativeElement.value = '';
+  }
+
+  public get currentAnswer(): string {
+    return this.httpService.currentAnswer;
   }
 }

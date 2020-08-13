@@ -1,4 +1,4 @@
-<ul id="{{ category.id }}" class="list-group-item clearfix" (click)="onClick($event) "
+<li id="{{ category.id }}" class="list-group-item clearfix" (click)="onClick($event) "
   [ngClass]="selected ? 'active' : 'inactive'">
   <div id="{{ category.id }}" class=" box pull-left">
     <h4 id="{{ category.id }}" class="list-group-item-heading">Category name: {{ category.name }}</h4>
@@ -6,4 +6,4 @@
   </div>
   <span class="pull-right">
   </span>
-</ul>
+</li>

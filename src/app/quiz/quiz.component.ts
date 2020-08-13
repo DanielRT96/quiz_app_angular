@@ -7,8 +7,8 @@ import { HttpService } from '../http.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  currentQuestion: string;
-  currentAnswer: string;
+  // currentQuestion: string;
+  // currentAnswer: string;
   timer: number;
 
   constructor(private httpService: HttpService) {}
@@ -17,12 +17,17 @@ export class QuizComponent implements OnInit {
     this.generateQuestion();
   }
 
-  public generateQuestion() {
-    this.httpService.getRandom().subscribe(data => {
-      this.currentQuestion = data[0].question;
-      this.currentAnswer = data[0].answer;
-      console.log(this.currentAnswer);
-    });
+  generateQuestion() {
+    this.httpService.getRandom();
+    // .subscribe(data => {
+    //   this.currentQuestion = data[0].question;
+    //   this.currentAnswer = data[0].answer;
+    // });
+    // this.httpService.changeQuestion(this.currentQuestion);
+  }
+
+  public get questionText(): string {
+    return this.httpService.currentQuestion;
   }
 
   setTimer($event) {
