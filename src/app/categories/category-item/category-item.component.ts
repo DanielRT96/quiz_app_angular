@@ -11,7 +11,7 @@ import { DataService } from '../../data.service';
 })
 export class CategoryItemComponent implements OnInit {
   currentID: number;
-  radioValue: boolean;
+  @Input() radioValue: boolean;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -19,7 +19,7 @@ export class CategoryItemComponent implements OnInit {
 
   @Input() category: Category;
 
-  constructor(private httpService: HttpService, private data: DataService) {
+  constructor(private data: DataService) {
     this.data.currentID.subscribe(currentID => (this.currentID = currentID));
   }
 
@@ -28,14 +28,8 @@ export class CategoryItemComponent implements OnInit {
   handleChange($event) {
     this.radioValue = !this.radioValue;
     this.data.changeSelect(this.radioValue);
-    // console.log(this.radioValue); // testing - remove later
-    // console.log($event.target.value);
-    if (this.radioValue) {
-      this.currentID = Number($event.target.id);
-      this.data.changeID(this.currentID);
-      this.httpService.filterCategory(this.currentID);
-    } else {
-      this.generateQuestion.emit();
-    }
+    this.currentID = Number($event.target.id);
+    this.data.changeID(this.currentID);
+    this.generateQuestion.emit();
   }
 }

@@ -8,7 +8,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="category-container">
-      <app-category-item *ngFor="let category of categories" [category]="category" (generateQuestion)="getQuestion()">
+      <app-category-item *ngFor="let category of categories" [category]="category" (generateQuestion)="getQuestion()"
+        [radioValue]="radioValue">
       </app-category-item>
     </div>
     <button class="selectRandom" (click)="selectRandomCat()">Autoselect</button>

@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
   currentID: number;
+  radioValue: boolean;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -31,10 +32,12 @@ export class CategoriesComponent implements OnInit {
   }
 
   selectRandomCat() {
+    this.radioValue = !this.radioValue;
     const random = Math.floor(Math.random() * this.categories.length);
     this.currentID = this.categories[random].id;
     this.data.changeID(this.currentID);
-    this.httpService.filterCategory(this.currentID);
+    this.data.changeSelect(true);
+    this.getQuestion();
     console.log(this.currentID);
   }
 }
