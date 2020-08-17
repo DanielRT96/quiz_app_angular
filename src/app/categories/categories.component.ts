@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from './category.model';
 import { HttpService } from '../http.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,16 +10,15 @@ import { HttpService } from '../http.service';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
-  randomID: number;
+  currentID: number;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
   > = new EventEmitter();
 
-  getQuestion() {
-    this.generateQuestion.emit();
+  constructor(private httpService: HttpService, private data: DataService) {
+    this.data.currentID.subscribe(currentID => (this.currentID = currentID));
   }
-  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
     this.httpService.getCategories().subscribe(data => {
@@ -26,21 +26,15 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  selectRandomCat() {
-    const random = Math.floor(Math.random() * this.categories.length);
-    this.randomID = this.categories[random].id;
-    console.log(this.randomID);
+  getQuestion() {
+    this.generateQuestion.emit();
   }
 
-  // const selectRandom = () => {
-  //   const radioBoxes = this.radioBoxes;
-  //   const random = Math.floor(Math.random() * 10);
-
-  //   for (i = 0; i < radioBoxes.length; i++) {
-  //     radioBoxes[i].checked = false;
-  //   }
-  //   radioBoxes[random].checked = true;
-  //   currentID = radioBoxes[random].value;
-  //   categoryQuestion(currentID);
-  // };
+  selectRandomCat() {
+    const random = Math.floor(Math.random() * this.categories.length);
+    this.currentID = this.categories[random].id;
+    this.data.changeID(this.currentID);
+    this.httpService.filterCategory(this.currentID);
+    console.log(this.currentID);
+  }
 }

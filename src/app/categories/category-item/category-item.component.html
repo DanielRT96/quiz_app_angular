@@ -1,6 +1,6 @@
 <div class="list-group-item clearfix">
   <input #listElement type="radio" name="radioBox" class="radio" id="{{ category.id }}" [value]="category.id"
-    [checked]="radioValue" (click)="handleChange($event)">
+    [checked]="radioValue" [(ngModel)]="currentID" (click)="handleChange($event)">
   <h4 class="list-group-item-heading" for="radioBox">Category name: {{ category.name }}</h4>
   <p class="list-group-item-text" for="radioBox">Number of clues: {{ category.clueNumber }}</p>
 </div>

@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ContentChild,
-  ElementRef
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Category } from '../category.model';
 import { HttpService } from '../../http.service';
@@ -26,9 +18,10 @@ export class CategoryItemComponent implements OnInit {
   > = new EventEmitter();
 
   @Input() category: Category;
-  @Input() randomID: number;
 
-  constructor(private httpService: HttpService, private data: DataService) {}
+  constructor(private httpService: HttpService, private data: DataService) {
+    this.data.currentID.subscribe(currentID => (this.currentID = currentID));
+  }
 
   ngOnInit(): void {}
 
@@ -39,7 +32,6 @@ export class CategoryItemComponent implements OnInit {
     // console.log($event.target.value);
     if (this.radioValue) {
       this.currentID = Number($event.target.id);
-      // console.log(this.currentID); // testing - remove later
       this.data.changeID(this.currentID);
       this.httpService.filterCategory(this.currentID);
     } else {
