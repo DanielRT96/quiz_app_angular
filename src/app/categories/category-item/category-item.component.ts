@@ -12,8 +12,6 @@ import { DataService } from '../../data.service';
 export class CategoryItemComponent implements OnInit {
   selected: boolean;
   currentID: number;
-  // currentAnswer: string;
-  // currentQuestion: string;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -30,21 +28,31 @@ export class CategoryItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick($event) {
-    this.selected = !this.selected;
-    if (this.selected === true) {
-      this.currentID = Number($event.target.id);
-      console.log(this.currentID);
-      this.filterCategory(this.currentID);
-    }
-    // } else {
-    //   this.generateQuestion.emit();
-    // }
-  }
+  // onClick($event) {
+  //   this.selected = !this.selected;
+  //   // this.data.changeSelect(this.selected);
+  //   this.currentID = 0;
+  //   if (this.selected === true) {
+  //     this.currentID = Number($event.target.id);
+  //     this.data.changeID(this.currentID);
+  //     this.httpService.filterCategory(this.currentID);
+  //   } else {
+  //     this.generateQuestion.emit();
+  //   }
+  //   // this.currentID = Number($event.target.id);
+  //   // this.data.changeID(this.currentID);
+  //   // console.log(this.currentID);
+  //   // this.httpService.filterCategory(this.currentID);
+  // }
 
-  filterCategory(id) {
-    this.httpService.filterCategory(id);
-    this.data.changeSelect(this.selected);
+  // filterCategory(id) {
+  //   // this.data.changeSelect(this.selected);
+  //   this.httpService.filterCategory(id);
+  // }
+
+  handleChange($event) {
+    this.currentID = Number($event.target.id);
+    console.log(this.currentID);
     this.data.changeID(this.currentID);
   }
 }

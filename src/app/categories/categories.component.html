@@ -7,7 +7,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <app-category-item *ngFor="let category of categories" [category]="category" (generateQuestion)="getQuestion()">
-    </app-category-item>
+    <div class="category-container">
+      <app-category-item *ngFor="let category of categories" [category]="category" (generateQuestion)="getQuestion()">
+      </app-category-item>
+    </div>
   </div>
 </div>

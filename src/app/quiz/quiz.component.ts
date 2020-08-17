@@ -23,7 +23,7 @@ export class QuizComponent implements OnInit {
   }
 
   generateQuestion() {
-    if (this.selected === true) {
+    if (this.currentID) {
       this.httpService.filterCategory(this.currentID);
     } else {
       this.httpService.getRandom();

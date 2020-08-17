@@ -1,12 +1,17 @@
 <div class="row">
   <h1>CoffeeQuiz</h1>
-  <hr style="margin-bottom: 20px">
+  <hr style="margin-bottom: 20px" />
   <p id="question">{{ questionText }}</p>
 
-  <app-answer (generateQuestion)="generateQuestion()" [currentAnswer]="currentAnswer" [timer]="timer"></app-answer>
+  <app-answer
+    (generateQuestion)="generateQuestion()"
+    [timer]="timer"
+  ></app-answer>
 
-  <hr style="margin-top: 90px">
-  <button type="button" class="button" (click)="generateQuestion()">Next Question</button>
+  <hr style="margin-top: 90px" />
+  <button type="button" class="button" (click)="generateQuestion()">
+    Next Question
+  </button>
   <div class="dropdown">
     <button class="dropdown__hover">Set Time</button>
     <div class="dropdown__menu" (click)="setTimer($event)">
@@ -17,5 +22,4 @@
       <li value="5">5 sec</li>
     </div>
   </div>
-
 </div>
