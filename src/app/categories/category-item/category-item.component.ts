@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Category } from '../category.model';
-import { HttpService } from '../../http.service';
 import { DataService } from '../../data.service';
 
 @Component({

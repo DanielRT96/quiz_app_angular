@@ -32,11 +32,11 @@ export class CategoriesComponent implements OnInit {
   }
 
   selectRandomCat() {
-    this.radioValue = !this.radioValue;
+    this.radioValue = true;
     const random = Math.floor(Math.random() * this.categories.length);
     this.currentID = this.categories[random].id;
     this.data.changeID(this.currentID);
-    this.data.changeSelect(true);
+    this.data.changeSelect(this.radioValue);
     this.getQuestion();
     console.log(this.currentID);
   }
