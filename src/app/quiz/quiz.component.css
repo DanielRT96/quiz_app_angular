@@ -89,14 +89,3 @@ button:focus {
   color: white;
   cursor: pointer;
 }
-
-.dropdown__menu.closed li {
-  display: none;
-}
-
-/* .category-label {
-  font-family: "sans-serif";
-  color: #654321;
-  font-size: 15px;
-  padding: 2px 1px;
-} */

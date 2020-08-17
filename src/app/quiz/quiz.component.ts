@@ -27,8 +27,8 @@ export class QuizComponent implements OnInit {
 
   generateQuestion() {
     this.spinner.show();
-    console.log(this.selected); // testing - remove later
-    console.log(this.currentID); // testing - remove later
+    // console.log(this.selected); // testing - remove later
+    // console.log(this.currentID); // testing - remove later
     if (this.selected) {
       this.httpService.filterCategory(this.currentID);
       this.spinner.hide();

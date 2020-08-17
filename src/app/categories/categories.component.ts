@@ -9,6 +9,7 @@ import { HttpService } from '../http.service';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
+  randomID: number;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -24,4 +25,22 @@ export class CategoriesComponent implements OnInit {
       this.categories = data;
     });
   }
+
+  selectRandomCat() {
+    const random = Math.floor(Math.random() * this.categories.length);
+    this.randomID = this.categories[random].id;
+    console.log(this.randomID);
+  }
+
+  // const selectRandom = () => {
+  //   const radioBoxes = this.radioBoxes;
+  //   const random = Math.floor(Math.random() * 10);
+
+  //   for (i = 0; i < radioBoxes.length; i++) {
+  //     radioBoxes[i].checked = false;
+  //   }
+  //   radioBoxes[random].checked = true;
+  //   currentID = radioBoxes[random].value;
+  //   categoryQuestion(currentID);
+  // };
 }

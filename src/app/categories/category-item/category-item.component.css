@@ -1,23 +1,23 @@
 .list-group-item.clearfix:hover {
   background-color: grey;
-  cursor: pointer;
   color: white;
 }
 
 input[type="radio"] {
   width: 25px;
   float: left;
-  top: 25px;
+  top: 20px;
   vertical-align: baseline;
   box-sizing: border-box;
   display: inline-block;
+  cursor: pointer;
 }
 
 input[type='radio']:after {
   width: 20px;
   height: 20px;
   border-radius: 15px;
-  top: -2px;
+  top: -1px;
   left: 5px;
   position: relative;
   background-color: #d1d3d1;
@@ -31,7 +31,7 @@ input[type='radio']:checked:after {
   width: 20px;
   height: 20px;
   border-radius: 15px;
-  top: -2px;
+  top: -1px;
   left: 5px;
   position: relative;
   background-color: #2b1d0e;
