@@ -10,8 +10,8 @@ import { DataService } from '../../data.service';
   styleUrls: ['./category-item.component.css']
 })
 export class CategoryItemComponent implements OnInit {
-  selected: boolean;
   currentID: number;
+  radioValue: boolean;
 
   @Output('generateQuestion') generateQuestion: EventEmitter<
     any
@@ -19,40 +19,21 @@ export class CategoryItemComponent implements OnInit {
 
   @Input() category: Category;
 
-  constructor(private httpService: HttpService, private data: DataService) {
-    this.data.currentSelection.subscribe(
-      selected => (this.selected = selected)
-    );
-    this.data.currentID.subscribe(currentID => (this.currentID = currentID));
-  }
+  constructor(private httpService: HttpService, private data: DataService) {}
 
   ngOnInit(): void {}
 
-  // onClick($event) {
-  //   this.selected = !this.selected;
-  //   // this.data.changeSelect(this.selected);
-  //   this.currentID = 0;
-  //   if (this.selected === true) {
-  //     this.currentID = Number($event.target.id);
-  //     this.data.changeID(this.currentID);
-  //     this.httpService.filterCategory(this.currentID);
-  //   } else {
-  //     this.generateQuestion.emit();
-  //   }
-  //   // this.currentID = Number($event.target.id);
-  //   // this.data.changeID(this.currentID);
-  //   // console.log(this.currentID);
-  //   // this.httpService.filterCategory(this.currentID);
-  // }
-
-  // filterCategory(id) {
-  //   // this.data.changeSelect(this.selected);
-  //   this.httpService.filterCategory(id);
-  // }
-
   handleChange($event) {
-    this.currentID = Number($event.target.id);
-    console.log(this.currentID);
-    this.data.changeID(this.currentID);
+    this.radioValue = !this.radioValue;
+    this.data.changeSelect(this.radioValue);
+    console.log(this.radioValue); // testing - remove later
+    if (this.radioValue) {
+      this.currentID = Number($event.target.id);
+      console.log(this.currentID); // testing - remove later
+      this.data.changeID(this.currentID);
+      this.httpService.filterCategory(this.currentID);
+    } else {
+      this.generateQuestion.emit();
+    }
   }
 }

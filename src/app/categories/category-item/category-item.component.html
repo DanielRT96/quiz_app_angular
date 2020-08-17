@@ -1,9 +1,6 @@
-<div id="{{ category.id }}" class="list-group-item clearfix" [ngClass]="selected ? 'active' : 'inactive'">
-  <!-- <div id="{{ category.id }}" class=" box pull-left">
-    <h4 id="{{ category.id }}" class="list-group-item-heading">Category name: {{ category.name }}</h4>
-    <p id="{{ category.id }}" class="list-group-item-text">Number of clues: {{ category.clueNumber }}</p>
-  </div> -->
-  <input type="radio" name="radioBox" class="radio" id="{{ category.id }}" (change)="handleChange($event)">
+<div id="{{ category.id }}" class="list-group-item clearfix">
+  <input type="radio" name="radioBox" class="radio" id="{{ category.id }}" [checked]="radioValue"
+    (click)="handleChange($event)">
   <h4 class="list-group-item-heading" for="radioBox">Category name: {{ category.name }}</h4>
   <p class="list-group-item-text" for="radioBox">Number of clues: {{ category.clueNumber }}</p>
 </div>

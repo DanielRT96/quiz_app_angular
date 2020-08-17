@@ -6,3 +6,27 @@ h1 {
   color: #ffffff;
   padding: 2px 0px;
 }
+
+button {
+  background-color: #654321;
+  width: 160px;
+  font-size: 20px;
+  color: #fff;
+  border: 1px solid #2b1d0e;
+  margin: 20px 0px 0px 45px;
+  padding: 10px 10px;
+}
+
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #2b1d0e;
+}
+
+button:focus {
+  outline: 0;
+}

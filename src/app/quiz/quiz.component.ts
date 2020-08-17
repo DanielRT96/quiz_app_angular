@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { DataService } from '../data.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-quiz',
@@ -12,21 +13,28 @@ export class QuizComponent implements OnInit {
   selected: boolean;
   currentID: number;
 
-  constructor(private httpService: HttpService, private data: DataService) {}
+  constructor(
+    private httpService: HttpService,
+    private data: DataService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.generateQuestion();
-    this.data.currentSelection.subscribe(
-      selected => (this.selected = selected)
-    );
+    this.data.currentSelected.subscribe(selected => (this.selected = selected));
     this.data.currentID.subscribe(currentID => (this.currentID = currentID));
   }
 
   generateQuestion() {
-    if (this.currentID) {
+    this.spinner.show();
+    console.log(this.selected); // testing - remove later
+    console.log(this.currentID); // testing - remove later
+    if (this.selected) {
       this.httpService.filterCategory(this.currentID);
+      this.spinner.hide();
     } else {
       this.httpService.getRandom();
+      this.spinner.hide();
     }
   }
 

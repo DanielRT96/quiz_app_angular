@@ -32,7 +32,7 @@ export class AnswerComponent implements OnInit {
   ngOnInit(): void {}
 
   enterAnswer(value) {
-    this.inputValue = value;
+    this.inputValue = value.replace(/ /g, '').toLowerCase();
     this.status = 'neutral';
     setTimeout(() => {
       if (this.inputValue === this.currentAnswer) {

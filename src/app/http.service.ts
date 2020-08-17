@@ -23,7 +23,7 @@ export class HttpService {
   public getRandom() {
     return this.http.get('http://jservice.io/api/random').subscribe(data => {
       this.currentQuestion = data[0].question;
-      this.currentAnswer = data[0].answer;
+      this.currentAnswer = data[0].answer.replace(/ /g, '').toLowerCase();
       console.log(this.currentQuestion);
       console.log(this.currentAnswer);
       console.log(data[0].category_id);
@@ -36,7 +36,9 @@ export class HttpService {
       .subscribe(data => {
         const dataLength = Object.keys(data).length;
         const random = Math.floor(Math.random() * dataLength);
-        this.currentAnswer = data[random].answer;
+        this.currentAnswer = data[random].answer
+          .replace(/ /g, '')
+          .toLowerCase();
         this.currentQuestion = data[random].question;
         console.log(this.currentQuestion);
         console.log(this.currentAnswer);

@@ -1,12 +1,8 @@
 .list-group-item.clearfix:hover {
   background-color: grey;
   cursor: pointer;
+  color: white;
 }
-
-/* .list-group-item.clearfix.active {
-  background-color: grey;
-} */
-
 
 input[type="radio"] {
   width: 25px;

@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
   private selectSource = new BehaviorSubject<boolean>(false);
-  currentSelection = this.selectSource.asObservable();
+  currentSelected = this.selectSource.asObservable();
 
-  private idSource = new BehaviorSubject<number>(0);
+  private idSource = new BehaviorSubject<number>(null);
   currentID = this.idSource.asObservable();
 
   constructor() {}
